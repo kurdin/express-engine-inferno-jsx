@@ -41,7 +41,7 @@ Output html
 <!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8"/></head>
-<body><ul class="users"><li>Max</li><li>Bob</li></ul></body>
+<body><ul class="users"><li>Max</li><li>Sergey</li><li>Bob</li></ul></body>
 </html>
 ```
 
