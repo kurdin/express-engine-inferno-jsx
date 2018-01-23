@@ -1,7 +1,7 @@
 module.exports = {
 	cache: '',
 	views: '',
-	useCache: true,
+	viewСache: true,
 	appSrc: 'apps-inferno/src',
   serverRoot: __dirname,
   babelOptions: {

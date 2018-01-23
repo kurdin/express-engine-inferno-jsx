@@ -9,7 +9,7 @@ module.exports = function (path, dirname) {
 
 	if (path.indexOf(options.appSrc) === 0) {
 		var appSrcFile = p.join(options.serverRoot, path + '.jsx');
-		if (options.useCache) return require(appSrcFile);
+		if (options.viewCache) return require(appSrcFile);
 		else return reload(appSrcFile);
 	}
 
@@ -23,7 +23,7 @@ module.exports = function (path, dirname) {
 		dirname = null;
 	}
 
-	if (dirname && options.useCache) {
+	if (dirname && options.viewCache) {
 		path = p.join(dirname, path);
 	} else {
 		if (dirname && dirname.indexOf(options.cache) === 0) {
@@ -49,7 +49,7 @@ module.exports = function (path, dirname) {
 	}
 	else if (path.indexOf(options.views) === 0) {
 		var cachePath = path.replace(options.views, options.cache);
-		if (options.useCache) {
+		if (options.viewСache) {
 			if (fs.existsSync(cachePath + '.js')) {
 				return require(cachePath + '.js');
 			}
