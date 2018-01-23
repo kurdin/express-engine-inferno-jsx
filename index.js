@@ -27,7 +27,7 @@ engine.attachTo = function (server, params) {
 
 	server.engine('jsx', engine);
 	server.set('views', options.views);
-	server.set('view cache', options.viewСache);
+	server.set('view cache', options.viewCache);
 	server.set('view engine', 'jsx');
 
 	return engine;
@@ -70,8 +70,8 @@ engine.setOptions = function (params) {
 		options.appSrc = params.appSrc;
 	}
 
-	if (params.hasOwnProperty('viewСache')) {
-		options.viewСache = params.viewСache;
+	if (params.hasOwnProperty('viewCache')) {
+		options.viewCache = params.viewCache;
 	}
 	return engine;
 };

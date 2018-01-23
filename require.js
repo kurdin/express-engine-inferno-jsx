@@ -49,7 +49,7 @@ module.exports = function (path, dirname) {
 	}
 	else if (path.indexOf(options.views) === 0) {
 		var cachePath = path.replace(options.views, options.cache);
-		if (options.viewСache) {
+		if (options.viewCache) {
 			if (fs.existsSync(cachePath + '.js')) {
 				return require(cachePath + '.js');
 			}
