@@ -11,9 +11,7 @@ module.exports = {
         {
           useBuiltIns: 'usage',
           debug: false,
-          targets: {
-            browsers: ['last 2 versions', 'not ie > 8', 'ie 11', 'ie 10', 'not android > 4', 'not edge > 10']
-          }
+          "node": "current"
         }
       ],
       'stage-2'
@@ -24,7 +22,7 @@ module.exports = {
           'apps-inferno': require('path').resolve(__dirname + '/apps-inferno/src/')
         }
     	}],
-			'transform-decorators-legacy', 'transform-async-to-generator', ['inferno', { imports: true }], 'syntax-jsx'
+			'transform-decorators-legacy', ['inferno', { imports: true }], 'syntax-jsx'
 		]
 	},
   appRoot: __dirname + '/apps-inferno/src',
