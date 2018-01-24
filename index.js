@@ -14,6 +14,19 @@ function engine(path, params, cb) {
 	);
 }
 
+engine.create = function (config) {
+	if (!config.cache) {
+		throw new Error('Parameter "cache" is required');
+	}
+
+	if (!config.views) {
+		throw new Error('Parameter "views" is required');
+	}
+
+	engine.setOptions(config);
+  return engine;
+};
+
 engine.attachTo = function (server, params) {
 	if (!params.cache) {
 		throw new Error('Parameter "cache" is required');
