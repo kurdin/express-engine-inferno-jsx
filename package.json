@@ -4,6 +4,7 @@
   },
   "bundleDependencies": false,
   "dependencies": {
+    "async": "^2.6.0",
     "babel-core": "^6.26.0",
     "babel-plugin-inferno": "^3.2.0",
     "babel-plugin-module-resolver": "^3.0.0",
@@ -15,6 +16,7 @@
     "babel-traverse": "^6.26.0",
     "babel-types": "^6.26.0",
     "babylon": "^6.18.0",
+    "glob": "^7.1.2",
     "require-reload": "^0.2.2"
   },
   "deprecated": false,

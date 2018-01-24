@@ -2,13 +2,14 @@ var p = require('path');
 var fs = require('fs');
 var options = require('./options');
 var reload = require('require-reload')(require);
+var convertJSXtoJS = require('./convert');
 
 var local = /^\.{0,2}\//;
 
 module.exports = function (path, dirname) {
 
 	if (path.indexOf(options.appSrc) === 0) {
-		var appSrcFile = p.join(options.serverRoot, path + '.jsx');
+		var appSrcFile = p.join(options.serverRoot, path);
 		if (options.viewCache) return require(appSrcFile);
 		else return reload(appSrcFile);
 	}
@@ -74,5 +75,5 @@ function resolve(path) {
 }
 
 function convert(jsxPath, cachePath) {
-	return require('./convert')(jsxPath, cachePath);
+	return convertJSXtoJS(jsxPath, cachePath);
 }
