@@ -78,11 +78,11 @@ module.exports = function (jsxPath, outPath) {
 };
 
 function mkdir(path) {
-	path = path.replace(/\/[^\/]+\.\w+$/, '');
+	path = path.replace(/[\/\\][^\/\\]+\.\w+$/, '');
 
 	if (fs.existsSync(path)) return;
 
-	path = path.match(/\/[^\/]+/g);
+	path = path.match(/[\/\\][^\/\\]+/g);
 
 	var root = '';
 	var dirs = [];

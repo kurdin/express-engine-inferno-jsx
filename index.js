@@ -1,5 +1,6 @@
 var options = require('./options');
 var requireJSX = require('./require');
+var isAbsolute = require('is-absolute');
 require('./jsx-require');
 var InfernoServer = require('inferno-server');
 var componentCache = {};
@@ -54,7 +55,7 @@ engine.attachTo = function (server, params) {
 
 engine.setOptions = function (params) {
 	if (params.cache) {
-		if (params.cache.charAt(0) !== '/') {
+		if (!isAbsolute(params.cache)) {
 			throw new Error('Parameter "cache" should be absolute path to directory');
 		}
 
@@ -62,7 +63,7 @@ engine.setOptions = function (params) {
 	}
 
 	if (params.views) {
-		if (params.views.charAt(0) !== '/') {
+		if (!isAbsolute(params.views)) {
 			throw new Error('Parameter "views" should be absolute path to directory');
 		}
 
