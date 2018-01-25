@@ -25,10 +25,11 @@ module.exports = function (jsxPath, outPath) {
 			path.get('body').forEach(function (item) {
 				if (item.isExpressionStatement() && item.node.expression.type === 'JSXElement') {
 					item.replaceWith(
-						t.callExpression(
-							t.memberExpression(t.identifier('__components'), t.identifier('push')),
-							[item.node.expression]
-						)
+							t.assignmentExpression('=', t.identifier('__components'), item.node.expression)
+						// t.callExpression(
+						// 	t.memberExpression(t.identifier('__components'), t.identifier('push')),
+						// 	[item.node.expression]
+						// )
 					);
 				}
 			});

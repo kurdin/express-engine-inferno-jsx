@@ -1,13 +1,19 @@
 var options = require('./options');
 var requireJSX = require('./require');
-var Inferno = require('inferno');
 require('./jsx-require');
 var InfernoServer = require('inferno-server');
+var componentCache = {};
 
 module.exports = engine;
 
 function engine(path, params, cb) {
-	var Component = requireJSX(path.replace(/\.jsx$/, ''));
+	var Component;
+	if (!params.cache || !componentCache[path]) {
+		Component = requireJSX(path.replace(/\.jsx$/, ''));
+		componentCache[path] = Component;
+	} else {
+		Component = componentCache[path];
+	}
 	cb(null,
 		options.doctype +
 		InfernoServer.renderToStaticMarkup(Component(params)).replace(/<!--!-->/gm, '').replace(/<!---->/gm, '')

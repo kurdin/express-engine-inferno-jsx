@@ -25,6 +25,7 @@
   "keywords": [
     "express",
     "engine",
+    "kraken-js",
     "inferno",
     "jsx"
   ],
@@ -35,5 +36,5 @@
     "type": "git",
     "url": "git+https://github.com/kurdin/express-engine-inferno-jsx.git"
   },
-  "version": "1.2.4"
+  "version": "1.2.5"
 }

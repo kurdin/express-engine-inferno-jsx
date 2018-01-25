@@ -27,15 +27,14 @@ module.exports = {
 	},
   appRoot: __dirname + '/apps-inferno/src',
 	doctype: "<!DOCTYPE html>\n",
-	template: `
-var Inferno = require('inferno');
+  template: `
 var Component = require('inferno-component');
 var AppSharedData = require('express-engine-inferno-jsx/appshared');
 var requireJSX = require('express-engine-inferno-jsx/require');
 
 module.exports = function (props) {
-  var __components = [];
+  var __components;
   BODY
-  return __components[0];
+  return __components;
 };`
 };
