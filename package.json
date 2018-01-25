@@ -38,9 +38,6 @@
   "bugs": {
     "url": "https://github.com/kurdin/express-engine-inferno-jsx/issues"
   },
-  "bin": {
-    "express-engine-inferno-jsx": "build-attr-map.js"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }
