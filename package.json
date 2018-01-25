@@ -1,7 +1,5 @@
 {
-  "author": {
-    "name": "Sergey Kurdin"
-  },
+  "author": "Sergey Kurdin",
   "bundleDependencies": false,
   "dependencies": {
     "async": "^2.6.0",
@@ -36,5 +34,14 @@
     "type": "git",
     "url": "git+https://github.com/kurdin/express-engine-inferno-jsx.git"
   },
-  "version": "1.2.5"
+  "version": "1.2.5",
+  "bugs": {
+    "url": "https://github.com/kurdin/express-engine-inferno-jsx/issues"
+  },
+  "bin": {
+    "express-engine-inferno-jsx": "build-attr-map.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
