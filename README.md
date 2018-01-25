@@ -1,12 +1,13 @@
 
-# express-engine-inferno-jsx with support for KrakenJS
+# Express View Engine with Inferno JSX and support for KrakenJS
 
 ## Install and Configuration
 
-install express-engine-inferno-jsx
+Install express-engine-inferno-jsx
+
 `$ npm i express-engine-inferno-jsx --save` 
 
-module `express-engine-inferno-jsx` does not come with inferno packages to make sure you always can install/upgrade and use latest inferno's version.
+Module `express-engine-inferno-jsx` does not come with inferno packages to make sure you always can install/upgrade and use latest inferno's version.
 
 `$ npm i babel-plugin-inferno inferno inferno-component inferno-create-element inferno-dev-utils inferno-devtools --save`
 
