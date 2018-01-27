@@ -3,14 +3,24 @@ var fs = require('fs');
 var options = require('./options');
 var reload = require('require-reload')(require);
 var convertJSXtoJS = require('./convert');
+var componentsCache = {};
 
 var local = /^\.{0,2}\//;
 
 module.exports = function (path, dirname) {
+	var orgPath = path;
+
+	if (options.viewCache && componentsCache[orgPath]) {
+		console.log('render from cache', orgPath);
+		return componentsCache[orgPath];
+	}
 
 	if (path.indexOf(options.appSrc) === 0) {
 		var appSrcFile = p.join(options.serverRoot, path);
-		if (options.viewCache) return require(appSrcFile);
+		if (options.viewCache) {
+			componentsCache[orgPath] = require(appSrcFile);
+			return componentsCache[orgPath];
+		}
 		else return reload(appSrcFile);
 	}
 
@@ -35,7 +45,8 @@ module.exports = function (path, dirname) {
 	}
 
 	if (fs.existsSync(path + '.js')) {
-		return require(path);
+		componentsCache[orgPath] = require(path);
+		return componentsCache[orgPath];
 	}
 
 	if (path.indexOf(options.cache) === 0) {
@@ -52,7 +63,8 @@ module.exports = function (path, dirname) {
 		var cachePath = path.replace(options.views, options.cache);
 		if (options.viewCache) {
 			if (fs.existsSync(cachePath + '.js')) {
-				return require(cachePath + '.js');
+				componentsCache[orgPath] = require(cachePath + '.js');
+				return componentsCache[orgPath];
 			}
 		}
 		if (fs.existsSync(path + '.jsx')) {
@@ -60,6 +72,14 @@ module.exports = function (path, dirname) {
 			path = cachePath;
 		}
 	}
+
+	if (options.viewCache && componentsCache[path]) {
+		return componentsCache[path];
+	} else if (!componentsCache[path]) {
+		componentsCache[path] = require(path);
+		return componentsCache[path];		
+	}
+
 	return reload(path);
 };
 
