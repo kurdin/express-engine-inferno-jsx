@@ -9,23 +9,21 @@ var options = require('./options');
 
 var createExportFunction;
 
-module.exports = function (jsxPath, outPath) {
+module.exports = function(jsxPath, outPath) {
 	var code = fs.readFileSync(jsxPath).toString();
 
 	var ast = babylon.parse(code, {
-		sourceType: "module",
+		sourceType: 'module',
 		strictMode: false,
-		plugins: [
-			'jsx'
-		]
+		plugins: ['jsx']
 	});
 
 	traverse(ast, {
 		enter: function prepare(path) {
-			path.get('body').forEach(function (item) {
+			path.get('body').forEach(function(item) {
 				if (item.isExpressionStatement() && item.node.expression.type === 'JSXElement') {
 					item.replaceWith(
-							t.assignmentExpression('=', t.identifier('__components'), item.node.expression)
+						t.assignmentExpression('=', t.identifier('__components'), item.node.expression)
 						// t.callExpression(
 						// 	t.memberExpression(t.identifier('__components'), t.identifier('push')),
 						// 	[item.node.expression]
@@ -35,17 +33,16 @@ module.exports = function (jsxPath, outPath) {
 			});
 
 			path.traverse({
-				JSXAttribute: function (attr) {
+				JSXAttribute: function(attr) {
 					var name = attr.node.name.name;
 
 					if (name === 'class') {
 						attr.node.name.name = 'className';
-					}
-					else if (attrMap.hasOwnProperty(name)) {
+					} else if (attrMap.hasOwnProperty(name)) {
 						attr.node.name.name = attrMap[name];
 					}
 				},
-				CallExpression: function (func) {
+				CallExpression: function(func) {
 					if (func.node.callee.type === 'Identifier' && func.node.callee.name === 'require') {
 						func.node.callee.name = 'requireJSX';
 						func.node.arguments.push(t.identifier('__dirname'));
@@ -93,8 +90,7 @@ function mkdir(path) {
 
 		if (!fs.existsSync(root)) {
 			dirs.push(path.pop());
-		}
-		else {
+		} else {
 			break;
 		}
 	}

@@ -15,13 +15,16 @@ function engine(path, params, cb) {
 	} else {
 		Component = componentCache[path];
 	}
-	cb(null,
+	cb(
+		null,
 		options.doctype +
-		InfernoServer.renderToStaticMarkup(Component(params)).replace(/<!--!-->/gm, '').replace(/<!---->/gm, '')
+			InfernoServer.renderToStaticMarkup(Component(params))
+				.replace(/<!--!-->/gm, '')
+				.replace(/<!---->/gm, '')
 	);
 }
 
-engine.create = function (config) {
+engine.create = function(config) {
 	if (!config.cache) {
 		throw new Error('Parameter "cache" is required');
 	}
@@ -31,10 +34,10 @@ engine.create = function (config) {
 	}
 
 	engine.setOptions(config);
-  return engine;
+	return engine;
 };
 
-engine.attachTo = function (server, params) {
+engine.attachTo = function(server, params) {
 	if (!params.cache) {
 		throw new Error('Parameter "cache" is required');
 	}
@@ -53,7 +56,7 @@ engine.attachTo = function (server, params) {
 	return engine;
 };
 
-engine.setOptions = function (params) {
+engine.setOptions = function(params) {
 	if (params.cache) {
 		if (!isAbsolute(params.cache)) {
 			throw new Error('Parameter "cache" should be absolute path to directory');

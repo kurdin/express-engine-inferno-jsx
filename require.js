@@ -7,7 +7,7 @@ var componentsCache = {};
 
 var local = /^\.{0,2}\//;
 
-module.exports = function (path, dirname) {
+module.exports = function(path, dirname) {
 	var orgPath = path;
 
 	if (options.viewCache && componentsCache[orgPath]) {
@@ -19,8 +19,7 @@ module.exports = function (path, dirname) {
 		if (options.viewCache) {
 			componentsCache[orgPath] = require(appSrcFile);
 			return componentsCache[orgPath];
-		}
-		else return reload(appSrcFile);
+		} else return reload(appSrcFile);
 	}
 
 	if (!local.test(path)) {
@@ -53,12 +52,10 @@ module.exports = function (path, dirname) {
 
 		if (fs.existsSync(viewsPath + '.jsx')) {
 			convert(viewsPath + '.jsx', path + '.js');
-		}
-		else if (fs.existsSync(viewsPath + '.js')) {
+		} else if (fs.existsSync(viewsPath + '.js')) {
 			return require(viewsPath);
 		}
-	}
-	else if (path.indexOf(options.views) === 0) {
+	} else if (path.indexOf(options.views) === 0) {
 		var cachePath = path.replace(options.views, options.cache);
 		if (options.viewCache) {
 			if (fs.existsSync(cachePath + '.js')) {
@@ -76,7 +73,7 @@ module.exports = function (path, dirname) {
 		return componentsCache[path];
 	} else if (!componentsCache[path]) {
 		componentsCache[path] = require(path);
-		return componentsCache[path];		
+		return componentsCache[path];
 	}
 
 	return reload(path);
@@ -85,8 +82,7 @@ module.exports = function (path, dirname) {
 function resolve(path) {
 	try {
 		path = require.resolve(path + '.jsx');
-	}
-	catch (e) {
+	} catch (e) {
 		return null;
 	}
 

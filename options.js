@@ -1,11 +1,11 @@
 module.exports = {
-	cache: '',
-	views: '',
-	viewCache: false,
-	appSrc: 'apps-inferno/src',
+  cache: '',
+  views: '',
+  viewCache: false,
+  appSrc: 'apps-inferno/src',
   serverRoot: __dirname,
   babelOptions: {
-  	presets: [
+    presets: [
       [
         'env',
         {
@@ -16,17 +16,22 @@ module.exports = {
       ],
       'stage-2'
     ],
-		plugins: [
-				['module-resolver', {
-        'alias': {
-          'apps-inferno': require('path').resolve(__dirname + '/apps-inferno/src/')
+    plugins: [
+      [
+        'module-resolver',
+        {
+          alias: {
+            'apps-inferno': require('path').resolve(__dirname + '/apps-inferno/src/')
+          }
         }
-    	}],
-			'transform-decorators-legacy', ['inferno', { imports: true }], 'syntax-jsx'
-		]
-	},
+      ],
+      'transform-decorators-legacy',
+      ['inferno', { imports: true }],
+      'syntax-jsx'
+    ]
+  },
   appRoot: __dirname + '/apps-inferno/src',
-	doctype: "<!DOCTYPE html>\n",
+  doctype: '<!DOCTYPE html>\n',
   template: `
 var requireJSX = require('express-engine-inferno-jsx/require');
 
