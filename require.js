@@ -11,7 +11,6 @@ module.exports = function (path, dirname) {
 	var orgPath = path;
 
 	if (options.viewCache && componentsCache[orgPath]) {
-		console.log('render from cache', orgPath);
 		return componentsCache[orgPath];
 	}
 
