@@ -11,7 +11,7 @@ module.exports = {
         {
           useBuiltIns: 'usage',
           debug: false,
-          "node": "current"
+          node: 'current'
         }
       ],
       'stage-2'
