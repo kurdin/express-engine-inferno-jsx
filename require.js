@@ -43,7 +43,7 @@ module.exports = function (path, dirname) {
 	}
 
 	if (fs.existsSync(path + '.js')) {
-		componentsCache[orgPath] = require(path);
+		componentsCache[orgPath] = isDefault(require(path));
 		return componentsCache[orgPath];
 	}
 
