@@ -8,6 +8,15 @@ var componentsCache = {};
 var local = /^\.{0,2}\//;
 
 module.exports = function (path, dirname) {
+  var requireAlias =  options.requireAlias;
+
+	if (requireAlias) {
+		Object.keys(requireAlias).forEach(function(key) {
+			if (path.indexOf(key) === 0) path = path.replace(key, requireAlias[key]);
+		});
+		if (p.isAbsolute(path)) dirname = null;
+	}
+
 	var orgPath = path;
 
 	if (options.viewCache && componentsCache[orgPath]) {

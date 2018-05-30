@@ -81,6 +81,10 @@ engine.setOptions = function(params) {
 		options.babelOptions = params.babelOptions;
 	}
 
+	if (params.hasOwnProperty('requireAlias')) {
+		options.requireAlias = params.requireAlias;
+	}
+
 	if (params.hasOwnProperty('serverRoot')) {
 		options.serverRoot = params.serverRoot;
 	}

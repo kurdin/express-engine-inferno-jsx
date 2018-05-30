@@ -20,6 +20,10 @@ require('express-engine-inferno-jsx').attachTo(app, {
    cache: __dirname + '/views/cache', // required and should be absolute path to cache dir
    views: __dirname + '/views', // required and should be absolute path to views dir with jsx files
    serverRoot: __dirname,
+   requireAlias: {
+    'shared-modules' : "path:../../shared-components/node_modules",
+    "stores" : "path:../stores"
+   },
    appRoot: __dirname + '/public/js/inferno/src', // relative path to inferno front end app root folder
    appSrc: 'public/js/inferno/src', // absolute path to inferno front end app root folder
    viewCache: false, // `false` for development `true` for production
@@ -50,6 +54,10 @@ example of develpment config `./config/development.json`
                     {
                       "cache": "path:./.build/views/cache",
                       "views": "path:./views",
+                      "requireAlias": {
+                        "shared-modules" : "path:../../shared-components/node_modules",
+                        "stores" : "path:../stores"
+                      },
                       "serverRoot": "path:",
                       "appRoot": "path:./public/js/inferno/src",
                       "appSrc": "public/js/inferno/src",
@@ -79,6 +87,10 @@ example of production config `./config/production.json`
                   {
                     "cache": "path:./.build/views",
                     "views": "path:./.build/views",
+                    "requireAlias": {
+                      "shared-modules" : "path:../../shared-components/node_modules",
+                      "stores" : "path:../stores"
+                    },
                     "serverRoot": "path:",
                     "appRoot": "path:./public/js/inferno/src",
                     "appSrc": "public/js/inferno/src",
@@ -260,8 +272,9 @@ Object which has three properties:
  * `cache` - absolute path to cache directory
  * `views` - absolute path to views directory
  * `viewCache` - `true` || `false` default `false`
-   `appSrc` - relative path to inferno client apps source folder `'apps-inferno/src'`
-   `appRoot`: absolute path to inferno client app source folder `__dirname + '/apps-inferno/src'`
+ * `requireAlias` - alias map for require in views `{}` 
+ * `appSrc` - relative path to inferno client apps source folder `'apps-inferno/src'`
+ * `appRoot`: absolute path to inferno client app source folder `__dirname + '/apps-inferno/src'`
  * `serverRoot` - absolute path server root folder `__dirname`
  * `babelOptions` - object of babel tranform options,
  * `doctype` - string which will be prepended to output html, default value is `"<!DOCTYPE html>\n"`

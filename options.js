@@ -2,6 +2,7 @@ module.exports = {
   cache: '',
   views: '',
   viewCache: false,
+  requireAlias : {},
   appSrc: 'apps-inferno/src',
   serverRoot: __dirname,
   babelOptions: {
