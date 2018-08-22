@@ -5,6 +5,7 @@ module.exports = {
   requireAlias : {},
   appSrc: 'apps-inferno/src',
   serverRoot: __dirname,
+  typescriptSupport: false,  
   babelOptions: {
     presets: [
       [

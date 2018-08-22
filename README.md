@@ -19,6 +19,7 @@ var app = express();
 require('express-engine-inferno-jsx').attachTo(app, {
    cache: __dirname + '/views/cache', // required and should be absolute path to cache dir
    views: __dirname + '/views', // required and should be absolute path to views dir with jsx files
+   typescriptSupport: false, // if you need typescript support using require *.ts and *.tsx files set true
    serverRoot: __dirname,
    requireAlias: {
     'shared-modules' : "path:../../shared-components/node_modules",

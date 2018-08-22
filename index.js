@@ -33,6 +33,8 @@ engine.create = function(config) {
 		throw new Error('Parameter "views" is required');
 	}
 
+	if (config.typescriptSupport) require('./ts-require');
+
 	engine.setOptions(config);
 	return engine;
 };

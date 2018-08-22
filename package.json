@@ -34,7 +34,7 @@
     "type": "git",
     "url": "git+https://github.com/kurdin/express-engine-inferno-jsx.git"
   },
-  "version": "1.3.8",
+  "version": "1.4.0",
   "bugs": {
     "url": "https://github.com/kurdin/express-engine-inferno-jsx/issues"
   },
